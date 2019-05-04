@@ -9,8 +9,6 @@ import UserForm from './UserForm';
 
 const socket = io('/');
 
-export default hot(module)(App);
-
 class App extends Component {
     constructor(props) {
       super(props);
@@ -80,3 +78,5 @@ class App extends Component {
         return (<UserForm onUserSubmit={name => this.handleUserSubmit(name)} />)
      }
   };
+
+  export default hot(module)(App);
