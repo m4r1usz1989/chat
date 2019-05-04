@@ -17,13 +17,13 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     // klient nasłuchuje na wiadomość wejścia do czatu
 
-socket.on('join', (name) => {
-    // użytkownika, który pojawił się w aplikacji, zapisujemy do serwisu trzymającego listę osób w czacie
-    usersService.addUser({
+  socket.on('join', (name) => {
+      // użytkownika, który pojawił się w aplikacji, zapisujemy do serwisu trzymającego listę osób w czacie
+      usersService.addUser({
       id: socket.id,
       name
     });
-    // aplikacja emituje zdarzenie update, które aktualizuje informację na temat listy użytkowników każdemu nasłuchującemu na wydarzenie 'update'
+      // aplikacja emituje zdarzenie update, które aktualizuje informację na temat listy użytkowników każdemu nasłuchującemu na wydarzenie 'update'
     io.emit('update', {
       users: usersService.getAllUsers()
     });
